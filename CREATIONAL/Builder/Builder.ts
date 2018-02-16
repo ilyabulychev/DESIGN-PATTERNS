@@ -5,12 +5,11 @@ namespace Builder {
     /// </summary>
     interface ICarBuilder
     {
-        Reset()
-        SetSeats   (number:   number)
-        SetDoors   (number:   number)
-        SetEngine  (engine:   string)
-        SetComputer(computer: string)
-        GetResult  (): ICar;
+        SetSeats    (number  : number) : ICarBuilder;
+        SetDoors    (number  : number) : ICarBuilder;
+        SetEngine   (engine  : string) : ICarBuilder;
+        SetComputer (computer: string) : ICarBuilder;
+        Build       ()                 : ICar;
     }
 
     /// <summary>
@@ -29,35 +28,22 @@ namespace Builder {
     /// </summary>
     class Car implements ICar
     {
-        Doors:    number;
-        Seats:    number;
-        Engine:   string;
-        Computer: string;
+        private doors:    number;
+        private seats:    number;
+        private engine:   string;
+        private computer: string;
 
-        constructor(doors?: number, seats?: number, engine?: string, computer?: string) {
-            this.Doors    = doors;
-            this.Seats    = seats;
-            this.Engine   = engine;
-            this.Computer = computer;
+        constructor(options : ICar = { Doors: 0, Seats: 0, Engine: "", Computer: ""}) {
+            this.doors    = options.Doors;
+            this.seats    = options.Seats;
+            this.engine   = options.Engine;
+            this.computer = options.Computer;
         }
-    }
 
-    /// <summary>
-    /// Represents a product created by the builder
-    /// </summary>
-    class CarManual implements ICar
-    {
-        Doors:    number;
-        Seats:    number;
-        Engine:   string;
-        Computer: string;
-
-        constructor(doors?: number, seats?: number, engine?: string, computer?: string) {
-            this.Doors    = doors;
-            this.Seats    = seats;
-            this.Engine   = engine;
-            this.Computer = computer;
-        }
+        get Doors()    { return  this.doors    }
+        get Seats()    { return  this.seats    }
+        get Engine()   { return  this.engine   }
+        get Computer() { return  this.computer }
     }
 
     /// <summary>
@@ -65,54 +51,31 @@ namespace Builder {
     /// </summary>
     class CarBuilder implements ICarBuilder
     {
-        private car:Car;
+        private options;
 
-        Reset() {
-            this.car = new Car();
+        constructor() {
+            this.options = {}
         }
+
         SetSeats(number: number) {
-            this.car.Seats = number;
+            this.options.Seats = number;
+            return this;
         }
         SetDoors(number: number) {
-            this.car.Doors = number;
+            this.options.Doors = number;
+            return this;
         }
         SetEngine(engine: string) {
-            this.car.Engine = engine;
+            this.options.Engine = engine;
+            return this;
         }
         SetComputer(computer: string) {
-            this.car.Computer = computer;
+            this.options.Computer = computer;
+            return this;
         }
 
-        GetResult(): ICar {
-            return this.car;
-        }
-    }
-
-    /// <summary>
-    /// Concrete builder implementation
-    /// </summary>
-    class CarManualBuilder implements ICarBuilder
-    {
-        private carManual:CarManual;
-
-        Reset() {
-            this.carManual = new CarManual();
-        }
-        SetSeats(number: number) {
-            this.carManual.Seats = number;
-        }
-        SetDoors(number: number) {
-            this.carManual.Doors = number;
-        }
-        SetEngine(engine: string) {
-            this.carManual.Engine = engine;
-        }
-        SetComputer(computer: string) {
-            this.carManual.Computer = computer;
-        }
-
-        GetResult(): ICar {
-            return this.carManual;
+        Build(): ICar {
+            return new Car(this.options as ICar)
         }
     }
 
@@ -121,21 +84,19 @@ namespace Builder {
     /// </summary>
     class Director
     {
-        private builder:ICarBuilder;
-        constructor(builder: ICarBuilder) {
-            this.builder = builder;
-        }
+        private builder: ICarBuilder;
 
-        ChangeBuilder(builder: ICarBuilder) {
+        constructor(builder: ICarBuilder) {
             this.builder = builder;
         }
 
         Construct(type: string)
         {
-            this.builder.Reset();
-            this.builder.SetSeats(2);
-            this.builder.SetDoors(2);
-            this.builder.SetEngine("Engine");
+            console.log(this.builder);
+            this.builder
+                .SetSeats(2)
+                .SetDoors(2)
+                .SetEngine("Engine");
 
             if(type == "advanced") {
                 this.builder.SetComputer("HP Computer");
@@ -149,21 +110,13 @@ namespace Builder {
     class Application {
         public static Main() 
         {
-            // Car construction 
-            let carBuilder = new CarBuilder();
+            let builder = new CarBuilder();
 
-            let carDirector = new Director(carBuilder);
-            carDirector.Construct("advanced");
+            new Director(builder).Construct("advanced");
 
-            let car = carBuilder.GetResult();
+            let car = builder.Build();
 
-            // Manual construction 
-            let manualBuilder = new CarManualBuilder();
-
-            let manualDirector = new Director(manualBuilder);
-            manualDirector.Construct("advanced");
-
-            let manual = manualBuilder.GetResult();
+            console.log(`Car engine: ${car.Engine}, seats: ${car.Seats}, doors: ${car.Doors}, computer: ${car.Computer}`)
         }
     }
 

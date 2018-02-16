@@ -3,31 +3,31 @@ namespace AbstractFactory
     /// <summary>
     /// The Document Service abstraction
     /// </summary>
-    interface IDocumentService {
+    export interface IDocumentService {
 
         CreateWordDocument (name: string): IDocument
         CreateExcelDocument(name: string): IDocument
 
-        Add    (document : IDocument)
-        Find   (predicate: Function)
-        Encrypt(document : IDocument)
-        Decrypt(document : IDocument)
+        Add    (document : IDocument): number;
+        Find   (predicate: Function) : string;
+        Encrypt(document : IDocument): string;
+        Decrypt(document : IDocument): string;
     }
     
     /// <summary>
     /// The Document abstraction
     /// </summary>
-    interface IDocument {
-        Name: string;
-        Type: DocumentType;
-        Read()
-        Write()
+    export interface IDocument {
+        Name   : string;
+        Type   : DocumentType;
+        Read() : string;
+        Write(): string;
     }
   
     /// <summary>
     /// The Document Type enumeration
     /// </summary>
-    enum DocumentType {
+    export enum DocumentType {
         Word  = "docx",
         Excel = "xlsx",
         Json  = "json",
@@ -37,7 +37,7 @@ namespace AbstractFactory
     /// <summary>
     /// The Document's base class 
     /// </summary>
-    abstract class Document implements IDocument {
+    export abstract class Document implements IDocument {
         
         Name: string;
         Type: DocumentType
@@ -47,18 +47,14 @@ namespace AbstractFactory
             this.Type = type;
         }
 
-        Read() {
-            alert(`The ${this.Name} is reading`);
-        }
-        Write() {
-            alert(`The ${this.Name} is writing`);
-        }
+        Read  = () => `The ${this.Name} is reading`;
+        Write = () => `The ${this.Name} is writing`;
     }
 
     /// <summary>
     /// Microsoft Word document abstraction
     /// </summary>
-    abstract class WordDocument extends Document  {
+    export abstract class WordDocument extends Document  {
 
         constructor(name: string = "Word") {
             super(name, DocumentType.Word);
@@ -68,7 +64,7 @@ namespace AbstractFactory
     /// <summary>
     /// Microsoft Word 2016 document
     /// </summary>
-    class Word2016Document extends WordDocument  {
+    export class Word2016Document extends WordDocument  {
 
         constructor(name: string = "Word 2016") {
             super(name);
@@ -78,7 +74,7 @@ namespace AbstractFactory
     /// <summary>
     /// Microsoft Word 2007 document
     /// </summary>
-    class Word2007Document extends WordDocument  {
+    export class Word2007Document extends WordDocument  {
 
         constructor(name: string = "Word 2007") {
             super(name);
@@ -88,7 +84,7 @@ namespace AbstractFactory
     /// <summary>
     /// Microsoft Excel document abstraction
     /// </summary>
-    abstract class ExcelDocument extends Document  {
+    export abstract class ExcelDocument extends Document  {
 
         constructor(name: string = "Excel") {
             super(name, DocumentType.Word);
@@ -98,7 +94,7 @@ namespace AbstractFactory
     /// <summary>
     /// Microsoft Excel 2016 document
     /// </summary>
-    class Excel2016Document extends ExcelDocument  {
+    export class Excel2016Document extends ExcelDocument  {
 
         constructor(name: string = "Excel 2016") {
             super(name);
@@ -108,7 +104,7 @@ namespace AbstractFactory
     /// <summary>
     /// Microsoft Excel 2007 document
     /// </summary>
-    class Excel2007Document extends ExcelDocument  {
+    export class Excel2007Document extends ExcelDocument  {
 
         constructor(name: string = "Excel 2007") {
             super(name);
@@ -118,7 +114,7 @@ namespace AbstractFactory
     /// <summary>
     /// Document Service abstraction
     /// </summary>
-    abstract class DocumentService implements IDocumentService {
+    export abstract class DocumentService implements IDocumentService {
 
         List: object[];
 
@@ -129,25 +125,17 @@ namespace AbstractFactory
         abstract CreateWordDocument (name: string);
         abstract CreateExcelDocument(name: string);
 
-        Add(document : IDocument) {
-            this.List.push(document);
-        }
+        Add     = (document : IDocument) => this.List.push(document);
 
-        Find(predicate: Function) {
-            alert(`Enrypting the document...`);
-        }
-        Encrypt(document: IDocument) {
-            alert(`Enrypting the ${document.Name} file`);
-        }
-        Decrypt(document: IDocument) {
-            alert(`Decrypting the ${document.Name} file`);
-        }
+        Find    = (predicate: Function)  => `Enrypting the document...`;
+        Encrypt = (document:  IDocument) => `Enrypting the ${document.Name} file`;
+        Decrypt = (document:  IDocument) => `Decrypting the ${document.Name} file`;
     }
 
     /// <summary>
     /// Document 2016 Service
     /// </summary>
-    class Document2016Service extends DocumentService {
+    export class Document2016Service extends DocumentService {
      
         CreateWordDocument(name: string) : IDocument  {
 
@@ -166,7 +154,7 @@ namespace AbstractFactory
     /// <summary>
     /// Document 2007 Service
     /// </summary>
-    class Document2007Service extends DocumentService {
+    export class Document2007Service extends DocumentService {
     
         CreateWordDocument(name: string) : IDocument  {
 
@@ -185,7 +173,7 @@ namespace AbstractFactory
     /// <summary>
     /// Application
     /// </summary>
-    class Application {
+    export class Application {
         public static Main() {
             
             let document2016Service  = new Document2016Service();
@@ -201,7 +189,7 @@ namespace AbstractFactory
             ];
 
             for(let document of documents) {
-                document.Read();
+                console.log(document.Read());
             }
         }
     }
