@@ -1,4 +1,5 @@
 // Abstract Factory Pattern
+// - Abstract Factory offers the interface for creating a family of related objects, without explicitly specifying their classes
 
 (function () {
     
@@ -161,7 +162,7 @@
             let document2007Service  = new Document2007Service();
 
             let documents : IDocument[] = [
-                
+
                 document2016Service.CreateWordDocument("Factory Pattern 2016.docx"),
                 document2007Service.CreateWordDocument("Factory Pattern 2007.docx"),
 
