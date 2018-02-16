@@ -1,2 +1,0 @@
-# Decorator Pattern
-[not ready]

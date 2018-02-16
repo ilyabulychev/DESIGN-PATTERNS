@@ -1,2 +1,0 @@
-# Adapter Pattern
-[not ready]

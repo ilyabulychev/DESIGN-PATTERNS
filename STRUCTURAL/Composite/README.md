@@ -1,2 +1,0 @@
-# Composite Pattern
-[not ready]

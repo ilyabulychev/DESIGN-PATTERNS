@@ -1,2 +1,0 @@
-# Bridge Pattern
-[not ready]

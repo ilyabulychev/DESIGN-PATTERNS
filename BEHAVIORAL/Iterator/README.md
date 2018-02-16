@@ -1,2 +1,0 @@
-# Iterator Pattern
-[not ready]
