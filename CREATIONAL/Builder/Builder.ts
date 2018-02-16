@@ -111,9 +111,7 @@ namespace Builder {
         public static Main() 
         {
             let builder = new CarBuilder();
-
             new Director(builder).Construct("advanced");
-
             let car = builder.Build();
 
             console.log(`Car engine: ${car.Engine}, seats: ${car.Seats}, doors: ${car.Doors}, computer: ${car.Computer}`)
