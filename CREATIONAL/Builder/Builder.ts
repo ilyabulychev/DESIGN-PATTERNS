@@ -3,7 +3,7 @@ namespace Builder {
     /// <summary>
     /// The builder abstraction
     /// </summary>
-    interface ICarBuilder
+    export interface ICarBuilder
     {
         SetSeats    (number  : number) : ICarBuilder;
         SetDoors    (number  : number) : ICarBuilder;
@@ -15,7 +15,7 @@ namespace Builder {
     /// <summary>
     /// The product abstraction
     /// </summary>
-    interface ICar 
+    export interface ICar 
     {
         Doors:    number;
         Seats:    number;
@@ -26,7 +26,7 @@ namespace Builder {
     /// <summary>
     /// Represents a product created by the builder
     /// </summary>
-    class Car implements ICar
+    export class Car implements ICar
     {
         private doors:    number;
         private seats:    number;
@@ -49,7 +49,7 @@ namespace Builder {
     /// <summary>
     /// Concrete builder implementation
     /// </summary>
-    class CarBuilder implements ICarBuilder
+    export class CarBuilder implements ICarBuilder
     {
         private options;
 
@@ -82,7 +82,7 @@ namespace Builder {
     /// <summary>
     /// Director
     /// </summary>
-    class Director
+    export class Director
     {
         private builder: ICarBuilder;
 
@@ -107,14 +107,15 @@ namespace Builder {
     /// <summary>
     /// Application
     /// </summary>
-    class Application {
-        public static Main() 
+    export class Application {
+        
+        static Main() 
         {
             let builder = new CarBuilder();
             new Director(builder).Construct("advanced");
             let car = builder.Build();
 
-            console.log(`Car engine: ${car.Engine}, seats: ${car.Seats}, doors: ${car.Doors}, computer: ${car.Computer}`)
+            console.log(`Car engine: ${car.Engine}, seats: ${car.Seats}, doors: ${car.Doors}, computer: ${car.Computer}`);
         }
     }
 

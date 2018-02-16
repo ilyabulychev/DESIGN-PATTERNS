@@ -146,7 +146,8 @@ namespace Factory
     /// Application
     /// </summary>
     export class Application {
-        public static Main(documentService: IDocumentService) {
+        
+        static Main(documentService: IDocumentService) {
                   
             let documents : IDocument[] = [
                 documentService.Create("Factory Pattern.docx"),

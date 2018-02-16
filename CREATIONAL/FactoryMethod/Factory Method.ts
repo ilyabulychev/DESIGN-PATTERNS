@@ -172,7 +172,8 @@ namespace FactoryMethod
     /// Application
     /// </summary>
     export class Application {
-        public static Main() {
+        
+        static Main() {
             
             let wordDocumentService  = new WordDocumentService();
             let excelDocumentService = new ExcelDocumentService();

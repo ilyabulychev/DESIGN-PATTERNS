@@ -4,3 +4,4 @@ Responsible for efficient object creation mechanisms, which increase the flexibi
 * Factory Method
 * Abstract Facotry
 * Builder
+* Prototype
