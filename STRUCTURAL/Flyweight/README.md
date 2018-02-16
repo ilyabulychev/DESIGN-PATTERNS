@@ -1,0 +1,2 @@
+# Flyweight Pattern
+[not ready]
