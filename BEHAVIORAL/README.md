@@ -10,4 +10,6 @@ Responsible for the efficient and safe distribution of behaviors among the progr
  * State  [not ready]
  * Strategy  [not ready]
  * Template Method  [not ready]
- * Visitor  [not ready]
+ * Visitor  [not ready] 
+ 
+ 
