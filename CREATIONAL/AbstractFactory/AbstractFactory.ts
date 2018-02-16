@@ -1,8 +1,5 @@
-// ABSTRACT FACTORY PATTERN
-// - Abstract Factory offers the interface for creating a family of related objects, without explicitly specifying their classes.
-
-(function () {
-    
+namespace AbstractFactory
+{
     /// <summary>
     /// The Document Service abstraction
     /// </summary>
@@ -210,4 +207,4 @@
     }
 
     Application.Main();
-}());
+}
