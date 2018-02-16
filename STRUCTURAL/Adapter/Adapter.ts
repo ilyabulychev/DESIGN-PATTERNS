@@ -47,7 +47,7 @@ namespace Adapter {
         {  
             let readers : IReader[] = [
                 new JsonReader(),
-                new XmlReaderAdapter
+                new XmlReaderAdapter()
             ];
             
             for(let reader of readers) {
