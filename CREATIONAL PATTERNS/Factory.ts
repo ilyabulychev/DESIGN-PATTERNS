@@ -22,10 +22,10 @@
     }
   
     enum DocumentType {
-        Html = "html",
-        Json = "json",
-        Pdf  = "pdf",
-        Txt  = "txt"
+        Word  = "docx",
+        Excel = "xlsx",
+        Json  = "json",
+        Txt   = "txt"
     }
 
     // Documents
@@ -48,14 +48,25 @@
         }
     }
 
-    class HtmlDocument extends Document  {
+    class WordDocument extends Document  {
 
-        constructor(name: string = "index") {
-            super(name, DocumentType.Html);
+        constructor(name: string = "Word") {
+            super(name, DocumentType.Word);
         }
 
-        SourceCode() {
-            console.log(`Source code of ${this.Name}`);
+        ConvertToHtml() {
+            alert(`Converting of ${this.Name} to HTML...`);
+        }
+    }
+
+    class ExcelDocument extends Document  {
+
+        constructor(name: string = "Excel") {
+            super(name, DocumentType.Excel);
+        }
+
+        ConvertToHtml() {
+            alert(`Converting of ${this.Name} to HTML...`);
         }
     }
     
@@ -68,18 +79,7 @@
         }
 
         TextToJson(text: string) {
-            console.log(`Pararsing text of ${this.Name}`);
-        }
-    }
-
-    class PdfDocument extends Document  {
-
-        constructor(name: string = "document") {
-            super(name, DocumentType.Pdf);
-        }
-
-        Recognize() {
-            alert(`Recognizing text of ${this.Name}`);
+            alert(`Pararsing text of ${this.Name}`);
         }
     }
 
@@ -107,16 +107,16 @@
             let document: IDocument;
     
             switch(type) {
-                case DocumentType.Html:
-                    document = new HtmlDocument(name);
+                case DocumentType.Word:
+                    document = new WordDocument(name);
+                    break;
+    
+                case DocumentType.Excel:
+                    document = new ExcelDocument(name);
                     break;
     
                 case DocumentType.Json:
                     document = new JsonDocument(name);
-                    break;
-    
-                case DocumentType.Pdf:
-                    document = new PdfDocument(name);
                     break;
                 
                 case DocumentType.Txt:
@@ -148,8 +148,8 @@
         public static Main(documentService: IDocumentService) {
                   
             let documents : IDocument[] = [
-                documentService.Create("Factory Pattern.pdf"),
-                documentService.Create("Favorite Book.html"),
+                documentService.Create("Factory Pattern.docx"),
+                documentService.Create("Favorite Book.xlsx"),
                 documentService.Create("Factory.json")
             ];
 
@@ -157,10 +157,10 @@
                 document.Read();
             }
 
-            let pdfDocuments = documents.filter(o => o.Type == DocumentType.Pdf) as PdfDocument[];
+            let wordDocuments = documents.filter(o => o.Type == DocumentType.Word) as WordDocument[];
             
-            for(let document of pdfDocuments) {
-                document.Recognize();
+            for(let document of wordDocuments) {
+                document.ConvertToHtml();
             }
         }
     }

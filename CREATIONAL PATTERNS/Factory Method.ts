@@ -25,10 +25,10 @@
     }
   
     enum DocumentType {
-        Html = "html",
-        Json = "json",
-        Pdf  = "pdf",
-        Txt  = "txt"
+        Word  = "docx",
+        Excel = "xlsx",
+        Json  = "json",
+        Txt   = "txt"
     }
 
     // Documents
@@ -51,14 +51,25 @@
         }
     }
 
-    class HtmlDocument extends Document  {
+    class WordDocument extends Document  {
 
-        constructor(name: string = "index") {
-            super(name, DocumentType.Html);
+        constructor(name: string = "Word") {
+            super(name, DocumentType.Word);
         }
 
-        SourceCode() {
-            console.log(`Source code of ${this.Name}`);
+        ConvertToHtml() {
+            alert(`Converting of ${this.Name} to HTML...`);
+        }
+    }
+
+    class ExcelDocument extends Document  {
+
+        constructor(name: string = "Excel") {
+            super(name, DocumentType.Excel);
+        }
+
+        ConvertToHtml() {
+            alert(`Converting of ${this.Name} to HTML...`);
         }
     }
     
@@ -71,18 +82,7 @@
         }
 
         TextToJson(text: string) {
-            console.log(`Pararsing text of ${this.Name}`);
-        }
-    }
-
-    class PdfDocument extends Document  {
-
-        constructor(name: string = "document") {
-            super(name, DocumentType.Pdf);
-        }
-
-        Recognize() {
-            alert(`Recognizing text of ${this.Name}`);
+            alert(`Pararsing text of ${this.Name}`);
         }
     }
 
@@ -122,11 +122,21 @@
 
     // DocumentService's Factory Methods
 
-    class HtmlDocumentService extends DocumentService {
+    class WordDocumentService extends DocumentService {
     
         public Create(name: string) : IDocument  {
 
-            let document: IDocument = new HtmlDocument(name);
+            let document: IDocument = new WordDocument(name);
+
+            return document;
+        }
+    }
+
+    class ExcelDocumentService extends DocumentService {
+    
+        public Create(name: string) : IDocument  {
+
+            let document: IDocument = new ExcelDocument(name);
 
             return document;
         }
@@ -137,16 +147,6 @@
         public Create(name: string) : IDocument  {
 
             let document: IDocument = new JsonDocument(name);
-
-            return document;
-        }
-    }
-
-    class PdfDocumentService extends DocumentService {
-    
-        public Create(name: string) : IDocument  {
-
-            let document: IDocument = new PdfDocument(name);
 
             return document;
         }
@@ -167,25 +167,25 @@
     class Application {
         public static Main() {
             
-            let htmlDocumentService = new HtmlDocumentService();
+            let wordDocumentService  = new WordDocumentService();
+            let excelDocumentService = new ExcelDocumentService();
             let jsonDocumentService = new JsonDocumentService();
-            let pdfDocumentService  = new PdfDocumentService();
             let txtDocumentService  = new TxtDocumentService();
 
             let documents : IDocument[] = [
-                jsonDocumentService.Create("Factory.json"),
-                htmlDocumentService.Create("Favorite Book.html"),
-                pdfDocumentService .Create("Factory Book.pdf")
+                wordDocumentService .Create("Factory.docx"),
+                excelDocumentService.Create("Favorite Book.xlsx"),
+                jsonDocumentService .Create("Factory Book.json")
             ];
 
             for(let document of documents) {
                 document.Read();
             }
 
-            let pdfDocuments = documents.filter(o => o.Type == DocumentType.Pdf) as PdfDocument[];
+            let wordDocuments = documents.filter(o => o.Type == DocumentType.Word) as WordDocument[];
             
-            for(let document of pdfDocuments) {
-                document.Recognize();
+            for(let document of wordDocuments) {
+                document.ConvertToHtml();
             }
         }
     }
