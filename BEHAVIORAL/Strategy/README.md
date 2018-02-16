@@ -1,1 +1,2 @@
 # Strategy Pattern
+[not ready]
