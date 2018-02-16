@@ -1,11 +1,12 @@
-// Factory Pattern
-
-// - Creates objects without exposing the instantiation logic to the client
-// - Refers to the newly created object through a common interface
+// FACTORY PATTERN
+// - Creates objects without exposing the instantiation logic to the client.
+// - Refers to the newly created object through a common interface.
 
 (function () {
     
-    // Interfaces
+    /// <summary>
+    /// The Document Service abstraction
+    /// </summary>
     interface IDocumentService {
         Create (name: string): IDocument
         Add    (document : IDocument)
@@ -14,6 +15,9 @@
         Decrypt(document : IDocument)
     }
     
+    /// <summary>
+    /// The Document abstraction
+    /// </summary>
     interface IDocument {
         Name: string;
         Type: DocumentType;
@@ -21,6 +25,9 @@
         Write()
     }
   
+    /// <summary>
+    /// Document Type Enumeration
+    /// </summary>
     enum DocumentType {
         Word  = "docx",
         Excel = "xlsx",
@@ -28,8 +35,9 @@
         Txt   = "txt"
     }
 
-    // Documents
-    
+    /// <summary>
+    /// Abstract Base Document
+    /// </summary>
     abstract class Document implements IDocument {
         
         Name: string;
@@ -48,6 +56,9 @@
         }
     }
 
+    /// <summary>
+    /// Word Document
+    /// </summary>
     class WordDocument extends Document  {
 
         constructor(name: string = "Word") {
@@ -59,6 +70,9 @@
         }
     }
 
+    /// <summary>
+    /// Excel Document
+    /// </summary>
     class ExcelDocument extends Document  {
 
         constructor(name: string = "Excel") {
@@ -70,6 +84,9 @@
         }
     }
     
+    /// <summary>
+    /// Json Document
+    /// </summary>
     class JsonDocument extends Document  {
 
         Json: Object;
@@ -83,6 +100,9 @@
         }
     }
 
+    /// <summary>
+    /// Text Document
+    /// </summary>
     class TxtDocument extends Document  {
 
         constructor(name: string = "document") {
@@ -90,8 +110,9 @@
         }
     }
 
-    // DocumentService
-
+    /// <summary>
+    /// Abstract Base Document Service
+    /// </summary>
     class DocumentService implements IDocumentService {
     
         List: object[];
@@ -142,8 +163,9 @@
         }
     }
     
-    // Application
-    
+    /// <summary>
+    /// Application
+    /// </summary>
     class Application {
         public static Main(documentService: IDocumentService) {
                   

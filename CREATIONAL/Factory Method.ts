@@ -1,14 +1,16 @@
-// Factory Method Pattern
-// - Defines an interface for creating objects, but let subclasses to decide which class to instantiate
-// - Refers the newly created object through a common interface
+// FACTORY METHOD PATTERN
+// - Defines an interface for creating objects, but let subclasses to decide which class to instantiate.
+// - Refers the newly created object through a common interface.
 
 // Applicability 
-// - When the types and dependencies of objects with which your code should work are unknown in advance
-// - When you want to enable users to expand parts of your framework or library
+// - When the types and dependencies of objects with which your code should work are unknown in advance.
+// - When you want to enable users to expand parts of your framework or library.
 
 (function () {
     
-    // Interfaces
+    /// <summary>
+    /// The Document Service abstraction
+    /// </summary>
     interface IDocumentService {
         Create (name: string): IDocument
         Add    (document : IDocument)
@@ -17,6 +19,9 @@
         Decrypt(document : IDocument)
     }
     
+    /// <summary>
+    /// The Document abstraction
+    /// </summary>
     interface IDocument {
         Name: string;
         Type: DocumentType;
@@ -24,6 +29,9 @@
         Write()
     }
   
+    /// <summary>
+    /// Document Type Enumeration
+    /// </summary>
     enum DocumentType {
         Word  = "docx",
         Excel = "xlsx",
@@ -31,8 +39,9 @@
         Txt   = "txt"
     }
 
-    // Documents
-    
+    /// <summary>
+    /// Abstract Base Document
+    /// </summary>
     abstract class Document implements IDocument {
         
         Name: string;
@@ -51,6 +60,9 @@
         }
     }
 
+    /// <summary>
+    /// Word Document
+    /// </summary>
     class WordDocument extends Document  {
 
         constructor(name: string = "Word") {
@@ -62,6 +74,9 @@
         }
     }
 
+    /// <summary>
+    /// Excel Document
+    /// </summary>
     class ExcelDocument extends Document  {
 
         constructor(name: string = "Excel") {
@@ -73,6 +88,9 @@
         }
     }
     
+    /// <summary>
+    /// Json Document
+    /// </summary>
     class JsonDocument extends Document  {
 
         Json: Object;
@@ -86,6 +104,9 @@
         }
     }
 
+    /// <summary>
+    /// Text Document
+    /// </summary>
     class TxtDocument extends Document  {
 
         constructor(name: string = "document") {
@@ -93,8 +114,9 @@
         }
     }
 
-    // DocumentService
-
+    /// <summary>
+    /// Abstract Base Document Service
+    /// </summary>
     abstract class DocumentService implements IDocumentService {
 
         List: object[];
@@ -120,8 +142,9 @@
         }
     }
 
-    // DocumentService's Factory Methods
-
+    /// <summary>
+    /// Word Document Service
+    /// </summary>
     class WordDocumentService extends DocumentService {
     
         public Create(name: string) : IDocument  {
@@ -132,6 +155,9 @@
         }
     }
 
+    /// <summary>
+    /// Excel Document Service
+    /// </summary>
     class ExcelDocumentService extends DocumentService {
     
         public Create(name: string) : IDocument  {
@@ -142,6 +168,9 @@
         }
     }
 
+    /// <summary>
+    /// Json Document Service
+    /// </summary>
     class JsonDocumentService extends DocumentService {
     
         public Create(name: string) : IDocument  {
@@ -152,6 +181,9 @@
         }
     }
 
+    /// <summary>
+    /// Text Document Service
+    /// </summary>
     class TxtDocumentService extends DocumentService {
     
         public Create(name: string) : IDocument  {
@@ -162,8 +194,9 @@
         }
     }
     
-    // Application
-    
+    /// <summary>
+    /// Application
+    /// </summary>
     class Application {
         public static Main() {
             

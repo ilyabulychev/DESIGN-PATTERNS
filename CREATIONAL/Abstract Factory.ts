@@ -1,12 +1,14 @@
-// Abstract Factory Pattern
-// - Abstract Factory offers the interface for creating a family of related objects, without explicitly specifying their classes
+// ABSTRACT FACTORY PATTERN
+// - Abstract Factory offers the interface for creating a family of related objects, without explicitly specifying their classes.
 
 (function () {
     
-    // Interfaces
+    /// <summary>
+    /// The Document Service abstraction
+    /// </summary>
     interface IDocumentService {
 
-        CreateWordDocument(name: string): IDocument
+        CreateWordDocument (name: string): IDocument
         CreateExcelDocument(name: string): IDocument
 
         Add    (document : IDocument)
@@ -15,6 +17,9 @@
         Decrypt(document : IDocument)
     }
     
+    /// <summary>
+    /// The Document abstraction
+    /// </summary>
     interface IDocument {
         Name: string;
         Type: DocumentType;
@@ -22,6 +27,9 @@
         Write()
     }
   
+    /// <summary>
+    /// The Document Type enumeration
+    /// </summary>
     enum DocumentType {
         Word  = "docx",
         Excel = "xlsx",
@@ -29,8 +37,9 @@
         Txt   = "txt"
     }
 
-    // Documents
-    
+    /// <summary>
+    /// The Document's base class 
+    /// </summary>
     abstract class Document implements IDocument {
         
         Name: string;
@@ -49,7 +58,9 @@
         }
     }
 
-    // Microsoft Word Application
+    /// <summary>
+    /// Microsoft Word document abstraction
+    /// </summary>
     abstract class WordDocument extends Document  {
 
         constructor(name: string = "Word") {
@@ -57,6 +68,9 @@
         }
     }
 
+    /// <summary>
+    /// Microsoft Word 2016 document
+    /// </summary>
     class Word2016Document extends WordDocument  {
 
         constructor(name: string = "Word 2016") {
@@ -64,6 +78,9 @@
         }
     }
 
+    /// <summary>
+    /// Microsoft Word 2007 document
+    /// </summary>
     class Word2007Document extends WordDocument  {
 
         constructor(name: string = "Word 2007") {
@@ -71,7 +88,9 @@
         }
     }
 
-    // Microsoft Excel Application
+    /// <summary>
+    /// Microsoft Excel document abstraction
+    /// </summary>
     abstract class ExcelDocument extends Document  {
 
         constructor(name: string = "Excel") {
@@ -79,6 +98,9 @@
         }
     }
 
+    /// <summary>
+    /// Microsoft Excel 2016 document
+    /// </summary>
     class Excel2016Document extends ExcelDocument  {
 
         constructor(name: string = "Excel 2016") {
@@ -86,6 +108,9 @@
         }
     }
 
+    /// <summary>
+    /// Microsoft Excel 2007 document
+    /// </summary>
     class Excel2007Document extends ExcelDocument  {
 
         constructor(name: string = "Excel 2007") {
@@ -93,8 +118,9 @@
         }
     }
 
-    // DocumentService
-
+    /// <summary>
+    /// Document Service abstraction
+    /// </summary>
     abstract class DocumentService implements IDocumentService {
 
         List: object[];
@@ -121,6 +147,9 @@
         }
     }
 
+    /// <summary>
+    /// Document 2016 Service
+    /// </summary>
     class Document2016Service extends DocumentService {
      
         CreateWordDocument(name: string) : IDocument  {
@@ -137,6 +166,9 @@
         }
     }
 
+    /// <summary>
+    /// Document 2007 Service
+    /// </summary>
     class Document2007Service extends DocumentService {
     
         CreateWordDocument(name: string) : IDocument  {
@@ -153,8 +185,9 @@
         }
     }
     
-    // Application
-    
+    /// <summary>
+    /// Application
+    /// </summary>
     class Application {
         public static Main() {
             
