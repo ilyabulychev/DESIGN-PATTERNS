@@ -3,8 +3,8 @@ namespace Builder {
     /// <summary>
     /// The builder abstraction
     /// </summary>
-    export interface ICarBuilder
-    {
+    export interface ICarBuilder {
+
         SetSeats    (number  : number) : ICarBuilder;
         SetDoors    (number  : number) : ICarBuilder;
         SetEngine   (engine  : string) : ICarBuilder;
@@ -15,8 +15,8 @@ namespace Builder {
     /// <summary>
     /// The product abstraction
     /// </summary>
-    export interface ICar 
-    {
+    export interface ICar {
+
         Doors:    number;
         Seats:    number;
         Engine:   string;
@@ -26,8 +26,8 @@ namespace Builder {
     /// <summary>
     /// Represents a product created by the builder
     /// </summary>
-    export class Car implements ICar
-    {
+    export class Car implements ICar {
+
         private doors:    number;
         private seats:    number;
         private engine:   string;
@@ -49,8 +49,8 @@ namespace Builder {
     /// <summary>
     /// Concrete builder implementation
     /// </summary>
-    export class CarBuilder implements ICarBuilder
-    {
+    export class CarBuilder implements ICarBuilder {
+
         private options;
 
         constructor() {
@@ -82,16 +82,15 @@ namespace Builder {
     /// <summary>
     /// Director
     /// </summary>
-    export class Director
-    {
+    export class Director {
+        
         private builder: ICarBuilder;
 
         constructor(builder: ICarBuilder) {
             this.builder = builder;
         }
 
-        Construct(type: string)
-        {
+        Construct(type: string) {
             console.log(this.builder);
             this.builder
                 .SetSeats(2)

@@ -5,6 +5,7 @@ Responsible for efficient object creation mechanisms, which increase the flexibi
 * Abstract Facotry
 * Builder
 * Prototype
+* Singleton
 
 # Structural Patterns
 Responsible for building simple and efficient class hierarchies and relations between different classes.

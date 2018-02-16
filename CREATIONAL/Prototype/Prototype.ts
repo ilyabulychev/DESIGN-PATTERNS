@@ -1,7 +1,9 @@
 namespace Prototype {
 
-    export interface ICloneable 
-    {
+    /// <summary>
+    /// The Clone's abstraction
+    /// </summary>
+    export interface ICloneable {
         Clone(): ICar
     }
 
@@ -19,8 +21,8 @@ namespace Prototype {
     /// <summary>
     /// Represents a product created by the builder
     /// </summary>
-    export class Car implements ICar, ICloneable
-    {
+    export class Car implements ICar, ICloneable {
+
         private doors:    number;
         private seats:    number;
         private engine:   string;

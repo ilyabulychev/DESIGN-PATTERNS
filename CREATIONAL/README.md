@@ -5,3 +5,4 @@ Responsible for efficient object creation mechanisms, which increase the flexibi
 * Abstract Facotry
 * Builder
 * Prototype
+* Singleton
