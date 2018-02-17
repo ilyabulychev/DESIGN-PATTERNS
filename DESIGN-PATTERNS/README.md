@@ -1,16 +1,16 @@
 # Creational Patterns
 Responsible for efficient object creation mechanisms, which increase the flexibility and reuse of existing code.
-* Factory
-* Factory Method
-* Abstract Facotry
-* Builder
-* Prototype
-* Singleton
+* [Factory](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/CREATIONAL/Factory)
+* [Factory Method](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/CREATIONAL/FactoryMethod)
+* [Abstract Facotry](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/CREATIONAL/AbstractFacotry)
+* [Builder](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/CREATIONAL/Builder)
+* [Prototype](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/CREATIONAL/Prototype)
+* [Singleton](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/CREATIONAL/Singleton)
 
 # Structural Patterns
 Responsible for building simple and efficient class hierarchies and relations between different classes.
-* Adapter 
-* Bridge
+* [Adapter](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Adapter)
+* [Bridge](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Bridge)
 * Composite  [not ready]
 * Decorator  [not ready]
 * Facade  [not ready]
