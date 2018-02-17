@@ -1,6 +1,6 @@
 # Design Principles [SOLID]
-* Open Close Principle
-* Dependency Inversion Principle
-* Interface Segregation Principle
-* Single Responsibility Principle
-* Liskov's Substitution Principle
+* [S] Single Responsibility Principle
+* [O] Open Close Principle
+* [L] Liskov's Substitution Principle
+* [I] Interface Segregation Principle
+* [D] Dependency Inversion Principle
