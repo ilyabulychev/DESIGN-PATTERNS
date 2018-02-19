@@ -1,1 +1,1 @@
-# [D] Dependency Inversion Principle
+# [DIP] Dependency Inversion Principle

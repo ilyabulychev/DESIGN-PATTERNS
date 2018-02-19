@@ -1,1 +1,1 @@
-# [O] Open Close Principle
+# [OCP] Open Close Principle

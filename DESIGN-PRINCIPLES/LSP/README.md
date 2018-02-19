@@ -1,1 +1,1 @@
-# [L] Liskov's Substitution Principle
+# [LSP] Liskov's Substitution Principle
