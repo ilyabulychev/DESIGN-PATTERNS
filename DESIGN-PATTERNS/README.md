@@ -13,7 +13,7 @@ Responsible for building simple and efficient class hierarchies and relations be
 * [Bridge](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Bridge)
 * [Composite](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Composite)
 * [Decorator](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Decorator)
-* Facade  [not ready]
+* [Facade](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Facade)
 * Flyweight  [not ready]
 * Proxry  [not ready]
 
