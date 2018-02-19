@@ -4,8 +4,8 @@ namespace Decorator {
     /// Data Source Manager
     /// </summary>
     export interface DataSource {
-        ReadData() : any;
-        WriteData(data);
+        Read() : any;
+        Write(data);
     }
 
      /// <summary>
@@ -19,13 +19,13 @@ namespace Decorator {
             this.fileName = fileName;
         }
 
-        ReadData(): string {
+        Read(): string {
             let data = `{ "data" : 100 }`;
             console.log(`We are reading your data: ${data}...`);
             return data;
         }
 
-        WriteData(data: string) {
+        Write(data: string) {
             console.log(`We are saving your data: ${data}...`);
         }
     }
@@ -41,12 +41,12 @@ namespace Decorator {
             this.wrappee = source;
         }
 
-        ReadData() {
-            this.wrappee.ReadData();
+        Read() {
+            this.wrappee.Read();
         }
 
-        WriteData(data: any) {
-            this.wrappee.WriteData(data);
+        Write(data: any) {
+            this.wrappee.Write(data);
         }
     }
 
@@ -55,16 +55,16 @@ namespace Decorator {
     /// </summary>
     export class EncryptionDecorator extends DataSourceDecorator {
         
-        ReadData(): any {
-            let data = this.wrappee.ReadData();
+        Read(): any {
+            let data = this.wrappee.Read();
             console.log(`We are decrypting your data: ${data}...`);
             return data;
         }
 
         
-        WriteData(data: any) {
+        Write(data: any) {
             console.log(`We are encypting your data: ${data}...`);
-            this.wrappee.WriteData(data);
+            this.wrappee.Write(data);
         }
     }
 
@@ -73,16 +73,16 @@ namespace Decorator {
     /// </summary>
     export class ZipDecorator extends DataSourceDecorator {
         
-        ReadData(): string {
-            let data = this.wrappee.ReadData();
+        Read(): string {
+            let data = this.wrappee.Read();
             console.log(`We are unzipping your data: ${data}...`);
             return data;
         }
 
         
-        WriteData(data: string) {
+        Write(data: string) {
             console.log(`We are zipping your data: ${data}...`);
-            this.wrappee.WriteData(data);
+            this.wrappee.Write(data);
         }
     }
 
@@ -98,11 +98,11 @@ namespace Decorator {
         }
 
         Load(): string {
-            return this.source.ReadData();
+            return this.source.Read();
         }
 
         Save(data: string) {
-            this.source.WriteData(data);
+            this.source.Write(data);
         }
     }
 

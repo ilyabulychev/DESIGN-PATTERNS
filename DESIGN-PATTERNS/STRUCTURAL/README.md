@@ -6,4 +6,4 @@ Responsible for building simple and efficient class hierarchies and relations be
 * [Decorator](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Decorator)
 * [Facade](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Facade)
 * [Flyweight](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Flyweight)
-* Proxy  [not ready]
+* [Proxy](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Proxy)
