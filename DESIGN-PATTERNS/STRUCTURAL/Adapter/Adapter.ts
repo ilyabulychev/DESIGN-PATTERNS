@@ -11,7 +11,7 @@ namespace Adapter {
     /// <summary>
     /// Xml Reader / Old Style Class
     /// </summary>
-    class XmlReader {
+    export class XmlReader {
         ReadXML = ()  => `Reading XML file...`;
         WriteXML = () => `Writting XML file...`;
       }

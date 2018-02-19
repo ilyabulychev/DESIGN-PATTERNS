@@ -3,7 +3,7 @@ namespace Composite {
     /// <summary>
     /// The Team Object Abstraction
     /// </summary>
-    interface TeamObject {
+    export interface TeamObject {
         name: string;
         operate(): void;
     }
@@ -11,7 +11,7 @@ namespace Composite {
     /// <summary>
     /// The TeamLead 
     /// </summary>
-    class TeamLead implements TeamObject {
+    export class TeamLead implements TeamObject {
 
         private people: TeamObject[];
         name: string;
@@ -59,7 +59,7 @@ namespace Composite {
     /// <summary>
     /// The Developer 
     /// </summary>
-    class Developer implements TeamObject {
+    export class Developer implements TeamObject {
         
         name: string;
 
