@@ -5,5 +5,5 @@ Responsible for building simple and efficient class hierarchies and relations be
 * [Composite](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Composite)
 * [Decorator](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Decorator)
 * [Facade](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Facade)
-* Flyweight  [not ready]
+* [Flyweight](https://github.com/ilyabulychev/DESIGN-PATTERNS/tree/master/DESIGN-PATTERNS/STRUCTURAL/Flyweight)
 * Proxry  [not ready]
