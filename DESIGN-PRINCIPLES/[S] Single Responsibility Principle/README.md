@@ -1,0 +1,1 @@
+# [S] Single Responsibility Principle
