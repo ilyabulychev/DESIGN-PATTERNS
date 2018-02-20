@@ -48,7 +48,8 @@ namespace OpenClose {
         
         static Main() 
         {
-          
+            let report = new JSONReport();
+            report.Generate({ "ID": 1, "Name": "ILYA BULYCHEV"} as IEmployee);
         }
     }
 
