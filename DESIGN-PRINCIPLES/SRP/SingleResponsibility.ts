@@ -1,16 +1,25 @@
 namespace SingleResponsibility {
 
+    /// <summary>
+    /// Employee Interface
+    /// </summary>
     export interface IEmployee {
         ID: number;
         Name: string;
         InsertToTable(employee: IEmployee);
     }
 
+    /// <summary>
+    /// Report Interface
+    /// </summary>
     export interface IReport {
         Generate(employee: IEmployee);
     }
 
 
+    /// <summary>
+    /// Employee
+    /// </summary>
     export class Employee implements IEmployee {
         
         ID: number;
@@ -27,6 +36,9 @@ namespace SingleResponsibility {
         }
     }
 
+    /// <summary>
+    /// Report
+    /// </summary>
     export class Report implements IReport {
         Generate(employee: IEmployee) {
             console.log(`Report for employee: ${employee.ID}: ${employee.Name}.`)
