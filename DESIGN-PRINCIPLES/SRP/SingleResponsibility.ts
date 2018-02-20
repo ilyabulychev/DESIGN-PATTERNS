@@ -41,7 +41,7 @@ namespace SingleResponsibility {
     /// </summary>
     export class Report implements IReport {
         Generate(employee: IEmployee) {
-            console.log(`Report for employee: ${employee.ID}: ${employee.Name}.`)
+            console.log(`Report for employee: ${employee.ID}: ${employee.Name}.`);
         }
     }
 
